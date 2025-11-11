@@ -1,0 +1,41 @@
+{
+  "name": "funny-calendar-filler",
+  "version": "2.0.0",
+  "description": "A Node.js web app that creates fake calendar events using Google Calendar API",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "dev": "node --watch server.js",
+    "dev:full": "concurrently \"pnpm run dev\" \"cd frontend && pnpm run dev\"",
+    "frontend": "cd frontend && pnpm run dev",
+    "build": "cd frontend && pnpm run build",
+    "build:prod": "pnpm run build && echo 'Production build ready in frontend/dist'",
+    "preview": "cd frontend && pnpm run preview",
+    "clean": "rm -f token.json server-backup.js && rm -rf frontend/dist frontend/node_modules",
+    "backup": "cp server.js server-backup-$(date +%Y%m%d-%H%M%S).js",
+    "status": "curl -s http://localhost:3000/api/auth/status | jq .",
+    "install:all": "pnpm install && cd frontend && pnpm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "google-calendar",
+    "events",
+    "oauth2",
+    "automation",
+    "funny"
+  ],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.14.0",
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "googleapis": "^165.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
